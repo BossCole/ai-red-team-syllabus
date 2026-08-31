@@ -1,0 +1,6 @@
+# Local dev / serving scripts
+serve.ps1
+
+# OS junk
+Thumbs.db
+.DS_Store
