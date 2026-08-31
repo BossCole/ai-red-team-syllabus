@@ -24,11 +24,11 @@ An interactive, hands-on HTML syllabus for learning AI red-teaming and LLM secur
 
 ## How to use
 
-Open **`ai-red-teaming-syllabus.html`** in any modern browser. Progress is saved locally in your browser (per device). No installs or accounts required to take the course.
+Open **`index.html`** in any modern browser. Progress is saved locally in your browser (per device). No installs or accounts required to take the course.
 
 ## Hosting
 
-To share a live link (GitHub Pages), deploy the `ai-red-teaming-syllabus.html` file as a static site at the repository root — the page works standalone.
+The repo deploys to GitHub Pages from the `main` branch root as a static site. The `index.html` file is the default landing page — open a browser at the Pages URL to take the course directly.
 
 ## License
 
