@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenCode Zen Free Models — Comparison</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap');
+
+    :root {
+      --c-lime: #70990d;
+      --c-teal: #017977;
+      --c-navy: #002d41;
+      --c-blue: #183e87;
+      --c-purple: #4b266c;
+      --c-magenta: #783664;
+      --c-red: #a31700;
+      --c-orange: #a85000;
+
+      --bg: #f4f8f4;
+      --surface: #ffffff;
+      --fg: #112218;
+      --muted: #4a6352;
+      --border: #b8d4be;
+
+      --font-display: 'Matter', 'Inter', system-ui, sans-serif;
+      --font-body: 'Matter', 'Inter', system-ui, sans-serif;
+      --font-hand: 'Matter', 'Inter', system-ui, sans-serif;
+      --font-mono: ui-monospace, 'JetBrains Mono', monospace;
+      --radius: 14px;
+      --radius-lg: 28px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin-inline: auto;
+      padding: 32px 24px 64px;
+    }
+
+    header.hero {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .tag {
+      display: inline-block;
+      background: #edf5e6;
+      color: var(--c-lime);
+      border: 2px solid var(--c-lime);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-family: var(--font-hand);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+    }
+    h1 { font-family: var(--font-display); font-size: 32px; margin: 0 0 8px; color: var(--c-navy); line-height: 1.1; }
+    .sub { color: var(--muted); font-size: 15px; margin: 0; }
+
+    h2 { font-family: var(--font-display); font-size: 24px; color: var(--c-teal); margin: 34px 0 10px; }
+    h3 { font-size: 16px; margin: 0 0 6px; color: var(--fg); }
+
+    .card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .best-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .best-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-top: 6px solid var(--c-lime);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .best-card.pick { border-top-color: var(--c-purple); }
+    .best-card.context { border-top-color: var(--c-blue); }
+    .best-card.fin { border-top-color: var(--c-teal); }
+    .best-card.fast { border-top-color: var(--c-orange); }
+    .best-card .b-ico { font-size: 24px; }
+    .best-card .b-name { font-weight: 800; font-size: 16px; margin: 6px 0 2px; }
+    .best-card .b-use { font-size: 13px; color: var(--muted); }
+    .best-card .b-why { font-size: 14px; margin-top: 8px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      font-size: 14px;
+    }
+    thead th {
+      background: var(--c-navy);
+      color: #fff;
+      text-align: left;
+      padding: 12px 14px;
+      font-family: var(--font-hand);
+      font-size: 13px;
+      letter-spacing: 0.03em;
+    }
+    tbody td {
+      padding: 12px 14px;
+      border-top: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tbody tr:nth-child(even) { background: #fbfdfb; }
+    td.nowrap { white-space: nowrap; }
+    .badge {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .badge.free { background: #edf5e6; color: #3f5a08; border: 1px solid #b8d19b; }
+    .badge.default { background: #efeaf4; color: #4b266c; border: 1px solid #4b266c; }
+
+    .pill {
+      display: inline-block;
+      background: #edf5e6;
+      color: #3f5a08;
+      border: 1px solid #b8d19b;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 2px 2px 0 0;
+    }
+
+    .warn {
+      background: #fbf8e6;
+      border-left: 4px solid var(--c-orange);
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .warn strong { color: var(--c-red); }
+
+    .switcher {
+      background: #e6f5f2;
+      border: 2px solid var(--c-teal);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      font-size: 15px;
+      margin-top: 20px;
+    }
+    .switcher code {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+
+    .metric { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    footer {
+      margin-top: 40px;
+      border-top: 2px solid var(--border);
+      padding-top: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 20px 12px 40px; }
+      table { font-size: 13px; }
+      thead th, tbody td { padding: 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="hero">
+      <span class="tag">OpenCode Zen &bull; Free Models</span>
+      <h1>Free AI Model Comparison</h1>
+      <p class="sub">Which free model to use for what &mdash; an easy-reference chart based on the official OpenCode Zen pricing page and independent benchmarks.</p>
+    </header>
+
+    <!-- Quick lookup -->
+    <h2>⚡ Quick Reference</h2>
+    <div class="best-grid">
+      <div class="best-card pick">
+        <div class="b-ico">🛠️</div>
+        <div class="b-name">Best for real coding</div>
+        <div class="b-use">MiMo-V2.5 Free</div>
+        <div class="b-why">Strongest free coder &amp; agentic performance. Use for building Python tools, debugging, writing your harnesses.</div>
+      </div>
+      <div class="best-card">
+        <div class="b-ico">⚡</div>
+        <div class="b-name">Best for quick answers</div>
+        <div class="b-use">Big Pickle (your default)</div>
+        <div class="b-why">Fastest responses, zero setup. Fine for boilerplate, quick Q&amp;A &mdash; but weaker on complex multi-file work.</div>
+      </div>
+      <div class="best-card context">
+        <div class="b-ico">📚</div>
+        <div class="b-name">Best for huge documents</div>
+        <div class="b-use">Nemotron 3 Ultra Free</div>
+        <div class="b-why">Massive 1M-token context &mdash; feed it an entire repo or giant file and ask it to analyze it.</div>
+      </div>
+      <div class="best-card fin">
+        <div class="b-ico">💹</div>
+        <div class="b-name">Best for finance / numbers</div>
+        <div class="b-use">Ling 3.0 Flash Fin Free</div>
+        <div class="b-why">Tuned for financial and numerical analysis. Big context (262K) too.</div>
+      </div>
+      <div class="best-card fast">
+        <div class="b-ico">🚀</div>
+        <div class="b-name">Best for throwaway speed</div>
+        <div class="b-use">Nemotron 3.5 Lightning Free</div>
+        <div class="b-why">Fast variant for quick tasks where quality isn't critical.</div>
+      </div>
+    </div>
+
+    <!-- Full table -->
+    <h2>📊 Full Comparison</h2>
+    <div class="card" style="padding: 0;">
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Cost</th>
+            <th>Context</th>
+            <th>Made by</th>
+            <th>Best used for</th>
+            <th>Main trade-off</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Big Pickle</strong> <span class="badge default">your default</span></td>
+            <td class="nowrap"><span class="badge free">Free</span></td>
+            <td class="nowrap">200K</td>
+            <td>OpenCode (stealth model)</td>
+            <td>Quick questions, boilerplate, getting unstuck</td>
+            <td>~67% task success &mdash; weak on complex multi-file edits</td>
+          </tr>
+          <tr>
+            <td><strong>MiMo-V2.5 Free</strong></td>
+            <td class="nowrap"><span class="badge free">Free</span></td>
+            <td class="nowrap">200K</td>
+            <td>Xiaomi</td>
+            <td>Real coding work: Python, full-stack, refactors, agentic tasks</td>
+            <td>No vision; still a free-tier model</td>
+          </tr>
+          <tr>
+            <td><strong>Nemotron 3 Ultra Free</strong></td>
+            <td class="nowrap"><span class="badge free">Free</span></td>
+            <td class="nowrap"><strong>1M</strong></td>
+            <td>NVIDIA</td>
+            <td>Giant documents, whole-repo analysis, long conversations</td>
+            <td>Weaker pure-coding quality; trial-use logging</td>
+          </tr>
+          <tr>
+            <td><strong>Nemotron 3.5 Lightning Free</strong></td>
+            <td class="nowrap"><span class="badge free">Free</span></td>
+            <td class="nowrap">Lg ‡</td>
+            <td>NVIDIA</td>
+            <td>Fast, low-stakes tasks where speed matters</td>
+            <td>Trial-use logging; not built for big reasoning</td>
+          </tr>
+          <tr>
+            <td><strong>Ling 3.0 Flash Fin Free</strong></td>
+            <td class="nowrap"><span class="badge free">Free</span></td>
+            <td class="nowrap">262K</td>
+            <td>Zhipu</td>
+            <td>Finance / quantitative analysis, long docs</td>
+            <td>Niche-tuned; less general-purpose</td>
+          </tr>
+          <tr>
+            <td><strong>Muse Spark 1.2 Contributor Free</strong></td>
+            <td class="nowrap"><span class="badge free">Free</span></td>
+            <td class="nowrap">256K</td>
+            <td>Meta</td>
+            <td>Coding experiments; Meta contributor program</td>
+            <td>Prompts/completions used to train Meta models</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="padding: 12px 16px; margin: 0; font-size: 13px; color: var(--muted);">
+        All six are free during a limited-time promotion. Context windows from OpenCode/third-party model listings. Benchmarks (ORPT / SWE-bench / Artificial Analysis) from independent sources &mdash; figures are directional, not guarantees. &bdquo;Lg&lsquo; = large, exact token count not published for this tier.
+      </p>
+    </div>
+
+    <!-- Capability bar -->
+    <h2>📈 Coding Capability (illustrative, ~)</h2>
+    <div class="card">
+      <p style="margin-top: 0; font-size: 14px; color: var(--muted);">Approximate relative code-task completion for the free models (based on benchmark data, 2026). Paid frontier models sit higher.</p>
+      <div style="margin: 10px 0 6px;"><span style="font-weight:700;">MiMo-V2.5 Free</span> <span style="color:var(--muted);">— best free coder</span></div>
+      <div style="height:16px; border-radius:8px; background:#e6f5f2; overflow:hidden; border:1px solid #b8d4be;"><div style="width:86%; height:100%; background:var(--c-purple);"></div></div>
+      <div style="margin: 16px 0 6px;"><span style="font-weight:700;">Big Pickle</span> <span style="color:var(--muted);">— your default, fast but weaker</span></div>
+      <div style="height:16px; border-radius:8px; background:#e6f5f2; overflow:hidden; border:1px solid #b8d4be;"><div style="width:67%; height:100%; background:var(--c-lime);"></div></div>
+      <div style="margin: 16px 0 6px;"><span style="font-weight:700;">Nemotron 3 Ultra Free</span> <span style="color:var(--muted);">— great context, mid coding</span></div>
+      <div style="height:16px; border-radius:8px; background:#e6f5f2; overflow:hidden; border:1px solid #b8d4be;"><div style="width:58%; height:100%; background:var(--c-blue);"></div></div>
+      <p style="margin: 14px 0 0; font-size: 12px; color: var(--muted);">Percentages are rough illustrative figures from independent coding benchmarks &mdash; your results will vary by task.</p>
+    </div>
+
+    <!-- Caveats -->
+    <h2>⚠️ Important Caveats</h2>
+    <div class="warn">
+      <strong>Privacy:</strong> During the free period, your prompts and completions <strong>may be used to improve the model</strong> (explicitly true for Big Pickle and every other free model). <strong>Do not paste secrets, passwords, or confidential code</strong> while on the free tier.
+    </div>
+    <div class="warn">
+      <strong>NVIDIA trial models (Nemotron 3 Ultra / 3.5 Lightning):</strong> <strong>Trial use only</strong>. Do not submit personal or confidential data &mdash; sessions are logged for security and product-improvement purposes.
+    </div>
+    <div class="warn">
+      <strong>Muse Spark Contributor Free:</strong> Heavily discounted in exchange for <strong>permission to use your prompts/completions to train Meta models</strong>.
+    </div>
+    <div class="warn">
+      <strong>Free &ne; best:</strong> Free models generally lack vision and struggle with complex multi-file or long-conversation work. If opencode feels "dumb," upgrading to a paid model often fixes it.
+    </div>
+
+    <!-- How to switch -->
+    <h2>🔁 How to Switch Models</h2>
+    <div class="switcher">
+      In the opencode terminal, type <code>/models</code> and pick one:
+      <br />&bull; <code>opencode/big-pickle</code> — quick Q&amp;A (default)
+      <br />&bull; <code>opencode/mimo-v2.5-free</code> — best free coding work (recommended default for course)
+      <br />&bull; <code>opencode/nemotron-3-ultra-free</code> — huge documents / whole repo
+      <br />&bull; <code>opencode/ling-3.0-flash-fin-free</code> — finance &amp; numbers
+      <br />&bull; <code>opencode/nemotron-3.5-lightning-free</code> — fast throwaway tasks
+      <br />&bull; <code>opencode/muse-spark-1.2-contributor-free</code> — Meta contributor experiments
+    </div>
+
+    <footer>
+      Sources: <a href="https://opencode.ai/docs/zen/" target="_blank" rel="noopener">OpenCode Zen docs</a> (official pricing) &bull; independent 2026 benchmarks (ORPT, SWE-bench, Artificial Analysis) &bull; Created for personal reference.
+    </footer>
+  </div>
+</body>
+</html>
